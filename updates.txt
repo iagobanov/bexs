@@ -1,0 +1,22 @@
+1 - Criação Dockerfiles
+    - Add Dockerfile para Frontend
+    - Add Dockerfile para Backend
+    - Teste das imagens separadas (Front retornando erro por não se comunicar back)
+
+2 - Criação docker-composer
+    - Add contexto de build para as aplicações serem buildadas no momento de execução
+    - docker-compose up funcionando com aplicações se comunicando
+    - Add variaveis de exemplo para desenvolvedores
+    - Atualização BackendHost no código do backend para comunicação com container front. 
+
+3 - Terraform (Solução 1 - Auto Scalling Group + Balancer AWS)
+    - Criação modulos de VPC/ASG/ALB/TG
+    - Criação provider para estrutura
+** Nessa solução seria necessário a criação de uma AMI (Gestão de configuração pode ser feita com Ansible)
+    - Add provider de criação de EC2 para configuração da AMI
+
+4 - Terraform (Solução 2 - ECS)
+    - Criação modulos ECS/Service/Task Definition/ECR
+    - Criação provider Cluster + Task
+** Nessa solução é necessário utilização de arquivos de configuração da aplicação.
+** Os arquivos foram adicionados em suas devidas pastas.
