@@ -7,11 +7,15 @@ output "zone_id" {
 }
 
 output "public_subnets" {
-  value = "[${join(",",aws_subnet.public_subnet.*.id)}]"
+  value = "${tostring(aws_subnet.public_subnet.0.id)}"
+}
+
+output "asg_public_subnets" {
+  value = "${join(",",aws_subnet.public_subnet.*.id)}"
 }
 
 output "private_subnets" {
-  value = "${join(",",aws_subnet.private_subnet.*.id)}"
+  value = "${tostring(aws_subnet.private_subnet.1.id)}"
 }
 
 output "vpc_security_group" {

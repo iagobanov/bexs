@@ -1,7 +1,7 @@
 variable "name" {}
 
 variable "internal" {
-  default = true
+  default = false
 }
 
 variable "load_balancer_type" {

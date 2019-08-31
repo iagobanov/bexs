@@ -12,12 +12,6 @@ provider "aws" {
 #   }
 # }
 
-//Import the constants
-module "environment" {
-  source = "../"
-}
-
-
 module "vpc" {
   source   = "../../../../../modules/vpc"
   cidr_vpc = "${var.cidr_block}"
@@ -28,7 +22,6 @@ module "aws_security_group" {
   source      = "../../../../../modules/security_group/create_sg"
   sg_name     = "${var.sg_name}"
   vpc_id      = "${module.vpc.vpc_id}"
-  # ips_sg_list = "${var.ips_sg_list}"
 }
 
 module "sg_rules_https" {
@@ -39,13 +32,14 @@ module "sg_rules_https" {
   security_group_id = "${module.aws_security_group.id}"
 }
 
+
 module "application_loadbalancer" {
   source           = "../../../../../modules/alb/aws_lb"
-  name             = "ecs-${var.app_name}"
-  internal         = "${var.internal}"
+  name             = "alb-${var.app_name}"
+  internal         = false
   security_groups  = ["${module.aws_security_group.id}"]
   internal_subnets = ["${module.vpc.public_subnets}", "${module.vpc.private_subnets}"]
-  external_subnets = ["${module.vpc.public_subnets}", "${module.vpc.private_subnets}"]
+  external_subnets = ["${module.vpc.public_subnets}", "${module.vpc.private_subnets}"]  
 }
 
 # module "loadbalancer_lister_https" {
@@ -100,7 +94,7 @@ module "aws_autoscaling_group_tg" {
   health_check_type         = "ELB"
   desired_capacity          = "${var.desired_capacity}"
   lc_name                   = "${module.aws_launch_configuration.lc_name}"
-  subnets_id                = ["${module.vpc.public_subnets}"]
+  subnets_id                = ["${module.vpc.asg_public_subnets}"]
   target_group_arns         = ["${module.target_group.alb_tg_arn}"]
 }
 

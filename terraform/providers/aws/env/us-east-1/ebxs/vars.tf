@@ -7,28 +7,6 @@ variable "cidr_block" {
   default = "10.30.0.0/16"
 }
 
-variable "cidr_network_bits" {
-  default = "8"
-}
-
-variable "subnet_count" {
-  default = "1"
-}
-
-variable "azs" {
-  default = {
-    "us-east-1" = "us-east-1a,us-east-1b,us-east-1c,us-east-1d"
-  }
-}
-
-variable "region" {
-  default = "us-east-1"
-}
-
-variable "environment" {
-  default = "dev"
-}
-
 
 ### ASG Vars
 variable "elb_name" {
@@ -36,7 +14,7 @@ variable "elb_name" {
 }
 
 # variable "subnets_ids" {
-#   default = ["subnet-62223500", "subnet-c999aebd", "subnet-b82ec0e1"]
+#   default = "${output.module.vpc.subnets_ids.*.id}"
 # }
 
 
@@ -73,16 +51,11 @@ variable "lc_name" {
 }
 
 variable "ami_id" {
-  default = "ami-0cfd34b188b9e7ea0"
+  default = "ami-0ff8a91507f77f867"
 }
 
 variable "instance_type" {
   default = "t2.micro"
-}
-
-
-variable "lc_security_groups" {
-  default = "sg-03ec7263c3052f63a"
 }
 
 variable "iam_role" {
@@ -90,11 +63,11 @@ variable "iam_role" {
 }
 
 variable "key_name" {
-  default = "GuiaBolsoSP"
+  default = "bexs"
 }
 
 variable "sg_name" {
-  default = "sonar-elb-sg"
+  default = "ebxs-elb-sg"
 }
 
 variable "ips_sg_list" {

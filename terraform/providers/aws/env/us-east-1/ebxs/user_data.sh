@@ -1,23 +1,23 @@
 #!/bin/sh
-yum update
+yum update -y
 
 ## Install docker
-yum install -y --no-install-recommends \
-    apt-transport-https \
-    curl \
-    software-properties-common
-yum install -y --no-install-recommends \
-    linux-image-extra-$(uname -r) \
-    linux-image-extra-virtual    
-curl -fsSL 'https://sks-keyservers.net/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e' | sudo apt-key add -
-add-apt-repository \
-   "deb https://packages.docker.com/1.12/apt/repo/ \
-   ubuntu-$(lsb_release -cs) \
-   main"
-yum update -y
-yum -y install docker-engine
-usermod -aG docker ubuntu
+yum install amazon-linux-extras -y 
+yum install docker -y
 service docker start
+usermod -a -G docker ec2-user
+
+
+## Install Docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 ##Install Git
 yum install git -y
+
+## Clone repo
+git clone https://github.com/iagobanov/bexs.git
+
+## Start application
+cd bexs && docker-compose up &

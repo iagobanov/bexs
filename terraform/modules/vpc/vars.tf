@@ -1,5 +1,5 @@
 variable "vpc_name" {
-  default = "dev"
+  default = "bexs-vpc"
 }
 
 variable "cidr_vpc" {
@@ -25,7 +25,7 @@ variable "region" {
 }
 
 variable "zone_name" {
-  default = "client"
+  default = "bexs"
 }
 
 variable "environment" {
