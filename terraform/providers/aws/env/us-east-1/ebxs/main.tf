@@ -42,14 +42,6 @@ module "application_loadbalancer" {
   external_subnets = ["${module.vpc.public_subnets}", "${module.vpc.private_subnets}"]  
 }
 
-# module "loadbalancer_lister_https" {
-#   ssl_certificate   = true
-#   source            = "../../../../../modules/alb/aws_lb_listener"
-#   load_balancer_arn = "${module.application_loadbalancer.alb_arn}"
-#   certificate_arn   = "${data.aws_acm_certificate.aws_guiabolso.arn}"
-#   target_group_arn  = "${module.target_group.alb_tg_arn}"
-# }
-
 module "loadbalancer_lister_http" {
   source            = "../../../../../modules/alb/aws_lb_listener"
   load_balancer_arn = "${module.application_loadbalancer.alb_arn}"
