@@ -99,7 +99,7 @@ variable "listener_protocol" {
 }
 
 variable "target_group_port" {
-  default = 8000
+  default = 80
 }
 
 variable "target_group_health_path" {
