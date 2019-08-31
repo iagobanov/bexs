@@ -103,7 +103,7 @@ variable "target_group_port" {
 }
 
 variable "target_group_health_path" {
-  default = "about"
+  default = "/"
 }
 
 variable "target_group_matcher" {
