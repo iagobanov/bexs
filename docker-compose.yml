@@ -7,7 +7,7 @@ services:
           - ENV=develop
           - SAMPLE_VAR_FOR_DEVELOPERS=example
         ports :
-          - "8000:8000"            
+          - "80:8000"            
         # volumes:
         #     - /this/app/dont/need/persistence
     backend:
