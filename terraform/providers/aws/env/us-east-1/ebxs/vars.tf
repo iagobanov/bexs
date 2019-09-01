@@ -13,11 +13,6 @@ variable "elb_name" {
   default = "ebxs-lb"
 }
 
-# variable "subnets_ids" {
-#   default = "${output.module.vpc.subnets_ids.*.id}"
-# }
-
-
 variable "elb_idle_timeout" {
   default = 360
 }
