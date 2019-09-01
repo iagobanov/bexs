@@ -16,7 +16,7 @@
 4 - Terraform (Solução 2 - ECS)
     - Criação modulos ECS/Service
 ** Nessa solução criariamos uma estrutura mais complexa, melhor para um ambiente de produção.
-** Modulos não adcionados a estrutura, apenas desenho lógico para visualização da solução.
+** Modulos adcionados a estrutura e desenho lógico para visualização da solução.
 
 
 Obs: *Os desenhos para as soluções descritas acima seguem em anexo para visualização.
