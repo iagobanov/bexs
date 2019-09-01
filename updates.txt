@@ -3,7 +3,7 @@
     - Add Dockerfile para Backend
     - Teste das imagens separadas (Front retornando erro por não se comunicar back)
 
-2 - Criação docker-composer
+2 - Criação docker-compose
     - Add contexto de build para as aplicações serem buildadas no momento de execução
     - docker-compose up funcionando com aplicações se comunicando
     - Add variaveis de exemplo para desenvolvedores
@@ -12,11 +12,12 @@
 3 - Terraform (Solução 1 - Auto Scalling Group + Balancer AWS)
     - Criação modulos de VPC/ASG/ALB/TG
     - Criação provider para estrutura
-** Nessa solução seria necessário a criação de uma AMI (Gestão de configuração pode ser feita com Ansible)
-    - Add provider de criação de EC2 para configuração da AMI
 
 4 - Terraform (Solução 2 - ECS)
-    - Criação modulos ECS/Service/Task Definition/ECR
-    - Criação provider Cluster + Task
-** Nessa solução é necessário utilização de arquivos de configuração da aplicação.
-** Os arquivos foram adicionados em suas devidas pastas.
+    - Criação modulos ECS/Service
+** Nessa solução criariamos uma estrutura mais complexa, melhor para um ambiente de produção.
+** Modulos não adcionados a estrutura, apenas desenho lógico para visualização da solução.
+
+
+Obs: *Os desenhos para as soluções descritas acima seguem em anexo para visualização.
+     *A solução 1 (ASG/ALB/TG) busca entregar um ambiente escalavel para a validação da aplicação do desenvolvedor.
